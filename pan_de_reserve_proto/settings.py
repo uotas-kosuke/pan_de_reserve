@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pan_de_reserve_proto.apps.PanDeReserveProtoConfig',
+    'pan_de_reserve.apps.PanDeReserveConfig',
 ]
 
 MIDDLEWARE = [

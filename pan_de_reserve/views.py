@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    return render(request, 'pan_de_reserve/index.html')
+
+def nyuryoku(request):
+    return render(request, 'pan_de_reserve/nyuryoku.html')
+
+def result(request):
+    return render(request, 'pan_de_reserve/result.html')

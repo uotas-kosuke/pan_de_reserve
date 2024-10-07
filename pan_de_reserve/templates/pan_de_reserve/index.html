@@ -1,1 +1,102 @@
-<h1>Index</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パン屋</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        .product {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .product img {
+            width: 50px;
+            height: 50px;
+            background-color: lightgray;
+        }
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+        .quantity button {
+            background-color: lightgray;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .checkout {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .checkout button {
+            background-color: pink;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .total {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .header {
+            background-color: lightgray;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+        <!-- Header section -->
+        <div class="header"></div>
+        
+        <!-- Product list -->
+        <div class="product">
+            <img src="#" alt="商品画像">
+            <p>技評ドーナツ ¥484(税込)</p>
+            <div class="quantity">
+                <button>-</button>
+                <p>0</p>
+                <button>+</button>
+            </div>
+        </div>
+        
+        <div class="product">
+            <img src="{% static "image.png" %}" alt="商品画像">
+            <p>技評ドーナツ ¥484(税込)</p>
+            <div class="quantity">
+                <button>-</button>
+                <p>0</p>
+                <button>+</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="#" alt="商品画像">
+            <p>技評ドーナツ ¥484(税込)</p>
+            <div class="quantity">
+                <button>-</button>
+                <p>0</p>
+                <button>+</button>
+            </div>
+        </div>
+
+        <!-- Total and checkout -->
+        <div class="total">
+            <p>合計 500円</p>
+        </div>
+        <div class="checkout">
+            <button>レジに進む</button>
+        </div>
+    </div>
+</body>
+</html>

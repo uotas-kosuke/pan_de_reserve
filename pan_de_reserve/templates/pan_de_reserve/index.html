@@ -7,9 +7,11 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            width: 100%;
         }
         .container {
-            width: 300px;
+            width: 80%;
             margin: 0 auto;
         }
         .product {
@@ -25,12 +27,6 @@
         .quantity {
             display: flex;
             align-items: center;
-        }
-        .quantity button {
-            background-color: lightgray;
-            border: none;
-            padding: 5px;
-            cursor: pointer;
         }
         .checkout {
             text-align: right;
@@ -51,22 +47,55 @@
             height: 100px;
             margin-bottom: 20px;
         }
+        .add_button {
+            color:rgba(43, 32, 32, 0.76) ;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 25px;
+            background-color: white;
+            border: 1px solid #D7DBDD;
+            border-radius: 0;
+            outline: 0;
+        }
+        .minus_button {
+            color:rgba(43, 32, 32, 0.76) ;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 25px;
+            background-color: white;
+            border: 1px solid #D7DBDD;
+            border-radius: 0;
+            outline: 0;
+        }
+        .inputtext {
+            color:rgba(43, 32, 32, 0.76) ;
+            font-size: 18px;
+            border-left: 0;
+            border-right: 0;
+            width: 80px;
+            line-height: 3rem;
+            text-align: center;
+            border: 1px solid #D7DBDD;
+            padding: 0 10px;
+        }
     </style>
 </head>
 <body>
     {% load static %}
-    <div class="container">
+      <div class="container">
         <!-- Header section -->
-        <div class="header"></div>
+        <div class="header">
+            <h1>パン屋</h1>
+        </div>
         
         <!-- Product list -->
         <div class="product">
-            <img src="#" alt="商品画像">
+            <img src="{% static "image.png" %}" alt="商品画像">
             <p>技評ドーナツ ¥484(税込)</p>
             <div class="quantity">
-                <button>-</button>
-                <p>0</p>
-                <button>+</button>
+                <button class="minus_button" id="down" >-</button>
+                <input type="text" value="0" class="inputtext" id="textbox"></input>
+                <button class="add_button" id="up">+</button>
             </div>
         </div>
         
@@ -74,19 +103,19 @@
             <img src="{% static "image.png" %}" alt="商品画像">
             <p>技評ドーナツ ¥484(税込)</p>
             <div class="quantity">
-                <button>-</button>
-                <p>0</p>
-                <button>+</button>
+                <button class="minus_button" id="down" >-</button>
+                <input type="text" value="0" class="inputtext" id="textbox"></input>
+                <button class="add_button" id="up">+</button>
             </div>
         </div>
 
         <div class="product">
-            <img src="#" alt="商品画像">
+            <img src="{% static "image.png" %}" alt="商品画像">
             <p>技評ドーナツ ¥484(税込)</p>
             <div class="quantity">
-                <button>-</button>
-                <p>0</p>
-                <button>+</button>
+                <button class="minus_button" id="down" >-</button>
+                <input type="text" value="0" class="inputtext" id="textbox"></input>
+                <button class="add_button" id="up">+</button>
             </div>
         </div>
 
@@ -98,5 +127,21 @@
             <button>レジに進む</button>
         </div>
     </div>
+    <script>
+        const up = document.getElementById('up');
+        const down = document.getElementById('down');
+        const textbox = document.getElementById('textbox');
+        let count = 0;
+        up.addEventListener('click', () => {
+            count++;
+            textbox.value = count;
+        });
+        down.addEventListener('click', () => {
+            if (count > 0) {
+                count--;
+                textbox.value = count;
+            }
+        });
+    </script>
 </body>
 </html>

@@ -20,8 +20,8 @@
             margin: 10px 0;
         }
         .product img {
-            width: 50px;
-            height: 50px;
+            width: 200px;
+            height: 200px;
             background-color: lightgray;
         }
         .quantity {
@@ -91,7 +91,8 @@
         <!-- Product list -->
         <div class="product">
             <img src="{% static "image.png" %}" alt="商品画像">
-            <p>技評ドーナツ ¥484(税込)</p>
+            <p class="product-name">技評ドーナツ</p>
+            <p class="product-price">¥500(税込)</p>
             <div class="quantity">
                 <button class="minus_button" id="down" >-</button>
                 <input type="text" value="0" class="inputtext" id="textbox"></input>
@@ -101,7 +102,8 @@
         
         <div class="product">
             <img src="{% static "image.png" %}" alt="商品画像">
-            <p>技評ドーナツ ¥484(税込)</p>
+            <p class="product-name">技評ドーナツ</p>
+            <p class="product-price">¥500(税込)</p>
             <div class="quantity">
                 <button class="minus_button" id="down" >-</button>
                 <input type="text" value="0" class="inputtext" id="textbox"></input>
@@ -111,7 +113,8 @@
 
         <div class="product">
             <img src="{% static "image.png" %}" alt="商品画像">
-            <p>技評ドーナツ ¥484(税込)</p>
+            <p class="product-name">技評ドーナツ</p>
+            <p class="product-price">¥500(税込)</p>
             <div class="quantity">
                 <button class="minus_button" id="down" >-</button>
                 <input type="text" value="0" class="inputtext" id="textbox"></input>
@@ -121,27 +124,44 @@
 
         <!-- Total and checkout -->
         <div class="total">
-            <p>合計 500円</p>
+            <p>合計 0円</p>
         </div>
         <div class="checkout">
             <button>レジに進む</button>
         </div>
     </div>
     <script>
-        const up = document.getElementById('up');
-        const down = document.getElementById('down');
-        const textbox = document.getElementById('textbox');
-        let count = 0;
-        up.addEventListener('click', () => {
-            count++;
-            textbox.value = count;
-        });
-        down.addEventListener('click', () => {
-            if (count > 0) {
-                count--;
+        const products = document.querySelectorAll('.product');
+        const totalElement = document.querySelector('.total p');
+        let totalPrice = 0;  // 初期合計金額
+
+        products.forEach((product) => {
+            let count = 0;
+            const upButton = product.querySelector('.add_button');
+            const downButton = product.querySelector('.minus_button');
+            const textbox = product.querySelector('.inputtext');
+            const priceText = product.querySelector('.product-price').textContent;
+            
+            // 商品価格を取得し、数値部分だけを抽出する
+            const pricePerItem = parseInt(priceText.match(/\d+/)[0], 10);
+
+            upButton.addEventListener('click', () => {
+                count++;
                 textbox.value = count;
-            }
+                totalPrice += pricePerItem;
+                totalElement.textContent = `合計 ${totalPrice}円`;
+            });
+
+            downButton.addEventListener('click', () => {
+                if (count > 0) {
+                    count--;
+                    textbox.value = count;
+                    totalPrice -= pricePerItem;
+                    totalElement.textContent = `合計 ${totalPrice}円`;
+                }
+            });
         });
+
     </script>
 </body>
 </html>

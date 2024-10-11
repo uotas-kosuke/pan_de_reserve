@@ -127,7 +127,7 @@
             <p>合計 0円</p>
         </div>
         <div class="checkout">
-            <button>レジに進む</button>
+            <button class="checkout-button">レジに進む</button>
         </div>
     </div>
     <script>
@@ -159,7 +159,14 @@
                     totalPrice -= pricePerItem;
                     totalElement.textContent = `合計 ${totalPrice}円`;
                 }
-            });
+            });            
+        });
+        
+        const checkoutButton = document.querySelector('.checkout-button');
+        checkoutButton.addEventListener('click', () => {
+            // 遷移先のURLを指定
+            localStorage.setItem('totalPrice', totalPrice);
+            window.location.href = '/nyuryoku'; // ここを遷移先のページに変更
         });
 
     </script>

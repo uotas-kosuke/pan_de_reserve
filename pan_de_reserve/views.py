@@ -8,3 +8,6 @@ def nyuryoku(request):
 
 def result(request):
     return render(request, 'pan_de_reserve/result.html')
+
+def administration(request): 
+    return render(request, 'pan_de_reserve/administration.html')
